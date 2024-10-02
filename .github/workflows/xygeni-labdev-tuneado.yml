@@ -33,5 +33,12 @@ jobs:
       - name: Uploading reports ..
         run: |
           echo Executing Xygeni scan ....    
+          for i in $(ls /home/runner/work/Mindustry/Mindustry/reports/*/)
+          do
+              echo $i
+              cp /home/runner/work/Mindustry/Mindustry/reports/*/$i "/home/runner/work/Mindustry/Mindustry/reports/*/${i}.json"
+          done
+          ls -l /home/runner/work/Mindustry/Mindustry/reports/*/
+          exit 1
           $HOME/.xygeni/xygeni report-upload -n KKK \
             -r /home/runner/work/Mindustry/Mindustry/xy_reports/misconf.Mindustry.json
