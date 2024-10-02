@@ -1,0 +1,500 @@
+{
+  "metadata" : {
+    "uuid" : "4a49f9ca-2143-4e12-9762-093c8c0a1ad6",
+    "timestamp" : "2024-10-02T09:32:28.533493Z",
+    "projectName" : "LGVExternalRepos/Mindustry",
+    "directory" : "/home/runner/work/Mindustry/Mindustry",
+    "developerHashes" : [ ],
+    "scanType" : "misconf",
+    "scm" : {
+      "fullName" : "LGVExternalRepos/Mindustry",
+      "visibility" : "public",
+      "url" : "https://github.com/LGVExternalRepos/Mindustry",
+      "kind" : "github",
+      "branch" : "origin/master"
+    },
+    "sourceType" : "REPO",
+    "format" : "misconf-xygeni"
+  },
+  "statistics" : {
+    "miscByKind" : {
+      "cicd_security" : 10,
+      "pipeline_external_dependencies" : 2,
+      "fuzzing" : 1,
+      "security_policy" : 1,
+      "token_permissions" : 1,
+      "repositories_admins" : 1,
+      "code_review" : 1,
+      "unprotected_branch" : 1,
+      "signed_commits" : 1,
+      "dependency_update_tool" : 1,
+      "sast_in_use" : 1,
+      "repository_creation" : 1,
+      "binary_artifacts" : 1,
+      "status_checks" : 1,
+      "steps_sbom" : 1,
+      "organization_mfa" : 1
+    },
+    "elapsedTime" : 17.079287097,
+    "detectors" : 86,
+    "files" : 0,
+    "misconfigurations" : 26
+  },
+  "errors" : [ ],
+  "misconfigurations" : [ {
+    "type" : "binary_artifacts",
+    "detector" : "binary_artifacts",
+    "severity" : "critical",
+    "confidence" : "highest",
+    "location" : {
+      "filepath" : "gradle/wrapper/gradle-wrapper.jar",
+      "beginLine" : 0,
+      "endLine" : 0,
+      "commitHash" : "74e068084",
+      "branch" : "master",
+      "pushedToRemote" : true,
+      "timeAdded" : 1493515559000,
+      "user" : "arnukren@gmail.com"
+    },
+    "explanation" : "Project should not have generated executable (binary) artifacts in the source repository.",
+    "tags" : [ "in-app-code", "non-reachable", "security", "supply-chain" ],
+    "properties" : { },
+    "issueId" : "MIS.binary_artifacts.binary_artifacts.gradle/wrapper/gradle-wrapper.jar.0"
+  }, {
+    "type" : "pipeline_external_dependencies",
+    "detector" : "pipeline_external_dependencies",
+    "severity" : "high",
+    "confidence" : "highest",
+    "location" : {
+      "filepath" : ".github/workflows/deployment.yml",
+      "beginLine" : 0,
+      "endLine" : 0
+    },
+    "explanation" : "Unpinned dependency: svenstaro/upload-release-action@v2 found in pipeline: deployment.",
+    "tags" : [ "cicd-sec-09", "cicd-security", "dependencies", "in-app-code", "reachable", "security", "slsa-4", "supply-chain" ],
+    "properties" : {
+      "pipeline" : "deployment",
+      "task" : "Upload client artifacts",
+      "version" : "svenstaro/upload-release-action@v2",
+      "job" : "deploy"
+    },
+    "issueId" : "MIS.pipeline_external_dependencies.pipeline_external_dependencies..github/workflows/deployment.yml.0"
+  }, {
+    "type" : "pipeline_external_dependencies",
+    "detector" : "pipeline_external_dependencies",
+    "severity" : "high",
+    "confidence" : "highest",
+    "location" : {
+      "filepath" : ".github/workflows/deployment.yml",
+      "beginLine" : 0,
+      "endLine" : 0
+    },
+    "explanation" : "Unpinned dependency: svenstaro/upload-release-action@v2 found in pipeline: deployment.",
+    "tags" : [ "cicd-sec-09", "cicd-security", "dependencies", "in-app-code", "reachable", "security", "slsa-4", "supply-chain" ],
+    "properties" : {
+      "pipeline" : "deployment",
+      "task" : "Upload server artifacts",
+      "version" : "svenstaro/upload-release-action@v2",
+      "job" : "deploy"
+    },
+    "issueId" : "MIS.pipeline_external_dependencies.pipeline_external_dependencies..github/workflows/deployment.yml.0"
+  }, {
+    "type" : "cicd_security",
+    "detector" : "pipeline_reviewed_before_execution",
+    "severity" : "critical",
+    "confidence" : "highest",
+    "location" : {
+      "filepath" : ".github/workflows/gradle-wrapper-validation.yml",
+      "beginLine" : 2,
+      "endLine" : 2,
+      "code" : "on: [pull_request]",
+      "commitHash" : "ec882dde1",
+      "branch" : "master",
+      "pushedToRemote" : true,
+      "timeAdded" : 1727860001000,
+      "user" : "129273100+luisgarciaxygeni@users.noreply.github.com"
+    },
+    "explanation" : "Direct PPE: GitHub workflow 'Validate Gradle Wrapper' allows Pull Requests to execute its modifications before being reviewed",
+    "tags" : [ "cicd-sec-04", "cicd-security", "in-app-code", "infrastructure", "reachable", "security" ],
+    "properties" : {
+      "cicd" : "GitHub",
+      "pipeline" : "Validate Gradle Wrapper"
+    },
+    "issueId" : "MIS.cicd_security.pipeline_reviewed_before_execution..github/workflows/gradle-wrapper-validation.yml.2"
+  }, {
+    "type" : "cicd_security",
+    "detector" : "pipeline_reviewed_before_execution",
+    "severity" : "critical",
+    "confidence" : "highest",
+    "location" : {
+      "filepath" : ".github/workflows/pr.yml",
+      "beginLine" : 3,
+      "endLine" : 3,
+      "code" : "on: [pull_request, workflow_dispatch]",
+      "commitHash" : "f1673eef2",
+      "branch" : "master",
+      "pushedToRemote" : true,
+      "timeAdded" : 1727860014000,
+      "user" : "129273100+luisgarciaxygeni@users.noreply.github.com"
+    },
+    "explanation" : "Direct PPE: GitHub workflow 'Pull Request Tests' allows Pull Requests to execute its modifications before being reviewed",
+    "tags" : [ "cicd-sec-04", "cicd-security", "in-app-code", "infrastructure", "reachable", "security" ],
+    "properties" : {
+      "cicd" : "GitHub",
+      "pipeline" : "Pull Request Tests"
+    },
+    "issueId" : "MIS.cicd_security.pipeline_reviewed_before_execution..github/workflows/pr.yml.3"
+  }, {
+    "type" : "signed_commits",
+    "detector" : "signed_commits",
+    "severity" : "high",
+    "confidence" : "highest",
+    "location" : {
+      "filepath" : "LGVExternalRepos/Mindustry",
+      "beginLine" : 0,
+      "endLine" : 0
+    },
+    "explanation" : "The repository has no protected branches.",
+    "tags" : [ "branch-protection", "cicd-sec-09", "cicd-security", "in-app-code", "non-reachable", "security", "supply-chain" ],
+    "properties" : { },
+    "issueId" : "MIS.signed_commits.signed_commits.LGVExternalRepos/Mindustry.0"
+  }, {
+    "type" : "token_permissions",
+    "detector" : "token_permissions",
+    "severity" : "critical",
+    "confidence" : "highest",
+    "location" : {
+      "filepath" : "LGVExternalRepos/Mindustry",
+      "beginLine" : 0,
+      "endLine" : 0
+    },
+    "explanation" : "Job runPush in workflow push.yml has write access to sensitive scopes: [contents]\nJob deploy in workflow deployment.yml has write access to sensitive scopes: [contents]\nWorkflows with excessive permissions granted: push.yml, deployment.yml",
+    "tags" : [ "cicd-sec-06", "cicd-security", "in-app-code", "infrastructure", "reachable", "security", "supply-chain" ],
+    "properties" : { },
+    "issueId" : "MIS.token_permissions.token_permissions.LGVExternalRepos/Mindustry.0"
+  }, {
+    "type" : "fuzzing",
+    "detector" : "fuzzing",
+    "severity" : "low",
+    "confidence" : "highest",
+    "location" : {
+      "filepath" : "LGVExternalRepos/Mindustry",
+      "beginLine" : 0,
+      "endLine" : 0
+    },
+    "explanation" : "No fuzzing tool found",
+    "tags" : [ "in-app-code", "non-reachable", "security", "supply-chain", "testing" ],
+    "properties" : {
+      "tool_kind" : "fuzzer"
+    },
+    "issueId" : "MIS.fuzzing.fuzzing.LGVExternalRepos/Mindustry.0"
+  }, {
+    "type" : "repositories_admins",
+    "detector" : "repositories_admins",
+    "severity" : "low",
+    "confidence" : "highest",
+    "location" : {
+      "filepath" : "LGVExternalRepos/Mindustry",
+      "beginLine" : 0,
+      "endLine" : 0
+    },
+    "explanation" : "1 repos have too low administrators. First seen: Mindustry.",
+    "tags" : [ "administrators", "in-app-code", "least-privilege", "non-reachable", "slsa-4" ],
+    "properties" : { },
+    "issueId" : "MIS.repositories_admins.repositories_admins.LGVExternalRepos/Mindustry.0"
+  }, {
+    "type" : "dependency_update_tool",
+    "detector" : "dependency_update_tool",
+    "severity" : "high",
+    "confidence" : "highest",
+    "location" : {
+      "filepath" : "LGVExternalRepos/Mindustry",
+      "beginLine" : 0,
+      "endLine" : 0
+    },
+    "explanation" : "No known [dependency_update] tool found in 6 project pipelines analyzed",
+    "tags" : [ "dependencies", "in-app-code", "non-reachable", "security", "supply-chain" ],
+    "properties" : {
+      "tool_kind" : "dependency_update"
+    },
+    "issueId" : "MIS.dependency_update_tool.dependency_update_tool.LGVExternalRepos/Mindustry.0"
+  }, {
+    "type" : "cicd_security",
+    "detector" : "cicd_secret_widely_shared",
+    "severity" : "high",
+    "confidence" : "highest",
+    "location" : {
+      "filepath" : "LGVExternalRepos/Mindustry",
+      "beginLine" : 0,
+      "endLine" : 0
+    },
+    "explanation" : "2 actions secrets defined at Organization LGVExternalRepos not limited to selected repositories. First 2: PAT_FOR_XYGENI_SCAN,XYGENI_TOKEN",
+    "tags" : [ "cicd-sec-06", "cicd-security", "in-app-code", "non-reachable", "security", "supply-chain" ],
+    "properties" : { },
+    "issueId" : "MIS.cicd_security.cicd_secret_widely_shared.LGVExternalRepos/Mindustry.0"
+  }, {
+    "type" : "repository_creation",
+    "detector" : "repository_creation",
+    "severity" : "high",
+    "confidence" : "highest",
+    "location" : {
+      "filepath" : "LGVExternalRepos/Mindustry",
+      "beginLine" : 0,
+      "endLine" : 0
+    },
+    "explanation" : "Repository creation for organization LGVExternalRepos is not limited to specific members",
+    "tags" : [ "code-leakage", "in-app-code", "least-privilege", "reachable", "repo-permissions" ],
+    "properties" : { },
+    "issueId" : "MIS.repository_creation.repository_creation.LGVExternalRepos/Mindustry.0"
+  }, {
+    "type" : "steps_sbom",
+    "detector" : "steps_sbom",
+    "severity" : "low",
+    "confidence" : "highest",
+    "location" : {
+      "filepath" : "LGVExternalRepos/Mindustry",
+      "beginLine" : 0,
+      "endLine" : 0
+    },
+    "explanation" : "No known [sbom] tool found in 6 project pipelines / 0 project build scripts analyzed",
+    "tags" : [ "in-app-code", "non-reachable", "sbom", "security", "slsa-1", "slsa-2", "slsa-3", "slsa-4", "supply-chain" ],
+    "properties" : {
+      "tool_kind" : "sbom"
+    },
+    "issueId" : "MIS.steps_sbom.steps_sbom.LGVExternalRepos/Mindustry.0"
+  }, {
+    "type" : "security_policy",
+    "detector" : "security_policy",
+    "severity" : "low",
+    "confidence" : "highest",
+    "location" : {
+      "filepath" : "LGVExternalRepos/Mindustry",
+      "beginLine" : 0,
+      "endLine" : 0
+    },
+    "tags" : [ "in-app-code", "non-reachable", "policy", "security", "supply-chain" ],
+    "properties" : { },
+    "issueId" : "MIS.security_policy.security_policy.LGVExternalRepos/Mindustry.0"
+  }, {
+    "type" : "code_review",
+    "detector" : "code_review",
+    "severity" : "high",
+    "confidence" : "highest",
+    "location" : {
+      "filepath" : "LGVExternalRepos/Mindustry",
+      "beginLine" : 0,
+      "endLine" : 0
+    },
+    "explanation" : "None of the 10 commits analyzed were reviewed",
+    "tags" : [ "code-reviews", "in-app-code", "non-reachable", "security", "source-code", "supply-chain" ],
+    "properties" : { },
+    "issueId" : "MIS.code_review.code_review.LGVExternalRepos/Mindustry.0"
+  }, {
+    "type" : "cicd_security",
+    "detector" : "build_attestation_framework",
+    "severity" : "high",
+    "confidence" : "highest",
+    "location" : {
+      "filepath" : "LGVExternalRepos/Mindustry",
+      "beginLine" : 0,
+      "endLine" : 0
+    },
+    "explanation" : "No known [build_attestation] tool found in 6 project pipelines / 0 project build scripts analyzed",
+    "tags" : [ "cicd-sec-09", "cicd-security", "in-app-code", "non-reachable", "security", "supply-chain" ],
+    "properties" : {
+      "tool_kind" : "build_attestation"
+    },
+    "issueId" : "MIS.cicd_security.build_attestation_framework.LGVExternalRepos/Mindustry.0"
+  }, {
+    "type" : "sast_in_use",
+    "detector" : "sast_in_use",
+    "severity" : "low",
+    "confidence" : "highest",
+    "location" : {
+      "filepath" : "LGVExternalRepos/Mindustry",
+      "beginLine" : 0,
+      "endLine" : 0
+    },
+    "explanation" : "No known [sast] tool found in 6 project pipelines / 0 project build scripts analyzed",
+    "tags" : [ "in-app-code", "non-reachable", "security", "supply-chain", "testing" ],
+    "properties" : {
+      "tool_kind" : "sast"
+    },
+    "issueId" : "MIS.sast_in_use.sast_in_use.LGVExternalRepos/Mindustry.0"
+  }, {
+    "type" : "cicd_security",
+    "detector" : "triggered_branch_is_protected",
+    "severity" : "high",
+    "confidence" : "highest",
+    "location" : {
+      "filepath" : ".github/workflows/xygeni-labdev-tuneado.yml",
+      "beginLine" : 0,
+      "endLine" : 0,
+      "commitHash" : "b6b8ee186",
+      "branch" : "master",
+      "pushedToRemote" : true,
+      "timeAdded" : 1727860447000,
+      "user" : "129273100+luisgarciaxygeni@users.noreply.github.com"
+    },
+    "explanation" : "GitHub pipeline .github/workflows/xygeni-labdev-tuneado.yml triggers the following unprotected branches: master",
+    "tags" : [ "cicd-sec-01", "cicd-sec-04", "cicd-security", "in-app-code", "infrastructure", "security" ],
+    "properties" : {
+      "branches" : [ "master" ],
+      "cicd" : "GitHub"
+    },
+    "issueId" : "MIS.cicd_security.triggered_branch_is_protected..github/workflows/xygeni-labdev-tuneado.yml.0"
+  }, {
+    "type" : "cicd_security",
+    "detector" : "triggered_branch_is_protected",
+    "severity" : "high",
+    "confidence" : "highest",
+    "location" : {
+      "filepath" : ".github/workflows/deployment.yml",
+      "beginLine" : 0,
+      "endLine" : 0,
+      "commitHash" : "ebcf83674",
+      "branch" : "master",
+      "pushedToRemote" : true,
+      "timeAdded" : 1727859979000,
+      "user" : "129273100+luisgarciaxygeni@users.noreply.github.com"
+    },
+    "explanation" : "GitHub pipeline .github/workflows/deployment.yml triggers the following unprotected branches: master",
+    "tags" : [ "cicd-sec-01", "cicd-sec-04", "cicd-security", "in-app-code", "infrastructure", "security" ],
+    "properties" : {
+      "branches" : [ "master" ],
+      "cicd" : "GitHub"
+    },
+    "issueId" : "MIS.cicd_security.triggered_branch_is_protected..github/workflows/deployment.yml.0"
+  }, {
+    "type" : "cicd_security",
+    "detector" : "triggered_branch_is_protected",
+    "severity" : "high",
+    "confidence" : "highest",
+    "location" : {
+      "filepath" : ".github/workflows/xygeni-labdev.yml",
+      "beginLine" : 0,
+      "endLine" : 0,
+      "commitHash" : "11fc5f103",
+      "branch" : "master",
+      "pushedToRemote" : true,
+      "timeAdded" : 1727859512000,
+      "user" : "180392035+xygeni-onboarding-app-demo[bot]@users.noreply.github.com"
+    },
+    "explanation" : "GitHub pipeline .github/workflows/xygeni-labdev.yml triggers the following unprotected branches: master",
+    "tags" : [ "cicd-sec-01", "cicd-sec-04", "cicd-security", "in-app-code", "infrastructure", "security" ],
+    "properties" : {
+      "branches" : [ "master" ],
+      "cicd" : "GitHub"
+    },
+    "issueId" : "MIS.cicd_security.triggered_branch_is_protected..github/workflows/xygeni-labdev.yml.0"
+  }, {
+    "type" : "cicd_security",
+    "detector" : "triggered_branch_is_protected",
+    "severity" : "high",
+    "confidence" : "highest",
+    "location" : {
+      "filepath" : ".github/workflows/push.yml",
+      "beginLine" : 0,
+      "endLine" : 0,
+      "commitHash" : "4422150fe",
+      "branch" : "master",
+      "pushedToRemote" : true,
+      "timeAdded" : 1727860030000,
+      "user" : "129273100+luisgarciaxygeni@users.noreply.github.com"
+    },
+    "explanation" : "GitHub pipeline .github/workflows/push.yml triggers the following unprotected branches: master",
+    "tags" : [ "cicd-sec-01", "cicd-sec-04", "cicd-security", "in-app-code", "infrastructure", "security" ],
+    "properties" : {
+      "branches" : [ "master" ],
+      "cicd" : "GitHub"
+    },
+    "issueId" : "MIS.cicd_security.triggered_branch_is_protected..github/workflows/push.yml.0"
+  }, {
+    "type" : "cicd_security",
+    "detector" : "unusual_activity_monitored",
+    "severity" : "high",
+    "confidence" : "highest",
+    "location" : {
+      "filepath" : "LGVExternalRepos/Mindustry",
+      "beginLine" : 0,
+      "endLine" : 0
+    },
+    "explanation" : "System github_actions is not being monitored for unusual activity",
+    "tags" : [ "cicd-sec-10", "cicd-security", "in-app-code", "non-reachable", "security", "supply-chain" ],
+    "properties" : { },
+    "issueId" : "MIS.cicd_security.unusual_activity_monitored.LGVExternalRepos/Mindustry.0"
+  }, {
+    "type" : "status_checks",
+    "detector" : "status_checks",
+    "severity" : "critical",
+    "confidence" : "highest",
+    "location" : {
+      "filepath" : "LGVExternalRepos/Mindustry",
+      "beginLine" : 0,
+      "endLine" : 0
+    },
+    "explanation" : "The repository has no protected branches.",
+    "tags" : [ "branch-protection", "in-app-code", "slsa-4", "source-code", "supply-chain" ],
+    "properties" : { },
+    "issueId" : "MIS.status_checks.status_checks.LGVExternalRepos/Mindustry.0"
+  }, {
+    "type" : "cicd_security",
+    "detector" : "app_permissions",
+    "severity" : "critical",
+    "confidence" : "highest",
+    "location" : {
+      "filepath" : "LGVExternalRepos/Mindustry",
+      "beginLine" : 0,
+      "endLine" : 0
+    },
+    "explanation" : "App xygeni-onboarding-app-demo (987,658) uses too broad permissions: [actions:write (allowed: read), security_events:write (allowed: read), workflows:write (allowed: read), contents:write (allowed: read), secrets:write (allowed: none), pull_requests:write (allowed: read)]",
+    "tags" : [ "cicd-security", "in-app-code", "infrastructure", "reachable", "security", "supply-chain" ],
+    "properties" : {
+      "app" : "xygeni-onboarding-app-demo",
+      "too-broad.permissions" : [ "actions:write (allowed: read)", "security_events:write (allowed: read)", "workflows:write (allowed: read)", "contents:write (allowed: read)", "secrets:write (allowed: none)", "pull_requests:write (allowed: read)" ]
+    },
+    "issueId" : "MIS.cicd_security.app_permissions.LGVExternalRepos/Mindustry.0"
+  }, {
+    "type" : "unprotected_branch",
+    "detector" : "unprotected_branch",
+    "severity" : "critical",
+    "confidence" : "highest",
+    "location" : {
+      "filepath" : "LGVExternalRepos/Mindustry",
+      "beginLine" : 0,
+      "endLine" : 0
+    },
+    "explanation" : "branch master is unprotected",
+    "tags" : [ "branch-protection", "cicd-sec-01", "cicd-security", "code-reviews", "in-app-code", "security", "source-code", "supply-chain" ],
+    "properties" : {
+      "branch" : "master",
+      "check" : "noBranchProtection"
+    },
+    "issueId" : "MIS.unprotected_branch.unprotected_branch.LGVExternalRepos/Mindustry.0"
+  }, {
+    "type" : "organization_mfa",
+    "detector" : "organization_mfa",
+    "severity" : "low",
+    "confidence" : "highest",
+    "location" : {
+      "filepath" : "LGVExternalRepos/Mindustry",
+      "beginLine" : 0,
+      "endLine" : 0
+    },
+    "tags" : [ "in-app-code", "mfa", "non-reachable", "security", "slsa-3", "slsa-4", "supply-chain" ],
+    "properties" : { },
+    "issueId" : "MIS.organization_mfa.organization_mfa.LGVExternalRepos/Mindustry.0"
+  } ],
+  "issuesAssetMapping" : {
+    "links" : { },
+    "userLinks" : {
+      "MIS.binary_artifacts.binary_artifacts.gradle/wrapper/gradle-wrapper.jar.0" : "user:Anuken:github",
+      "MIS.cicd_security.pipeline_reviewed_before_execution..github/workflows/gradle-wrapper-validation.yml.2" : "user:luisgarciaxygeni:github",
+      "MIS.cicd_security.pipeline_reviewed_before_execution..github/workflows/pr.yml.3" : "user:luisgarciaxygeni:github",
+      "MIS.cicd_security.triggered_branch_is_protected..github/workflows/deployment.yml.0" : "user:luisgarciaxygeni:github",
+      "MIS.cicd_security.triggered_branch_is_protected..github/workflows/push.yml.0" : "user:luisgarciaxygeni:github",
+      "MIS.cicd_security.triggered_branch_is_protected..github/workflows/xygeni-labdev-tuneado.yml.0" : "user:luisgarciaxygeni:github",
+      "MIS.cicd_security.triggered_branch_is_protected..github/workflows/xygeni-labdev.yml.0" : "user:xygeni-onboarding-app-demo[bot]:github"
+    }
+  }
+}
