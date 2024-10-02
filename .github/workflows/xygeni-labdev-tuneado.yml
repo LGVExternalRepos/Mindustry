@@ -29,3 +29,9 @@ jobs:
           name: archive-bin
           path: |
              reports
+             
+      - name: Uploading reports ..
+        run: |
+          echo Executing Xygeni scan ....    
+          $HOME/.xygeni/xygeni report-upload -n KKK \
+            xy_reports/misconf.Mindustry.json
