@@ -30,18 +30,17 @@ jobs:
           path: |
              reports
              
-      - name: Uploading reports ..
+      - name: Uploading reports .. reports/LGVExternalRepos/deps.Mindustry
         run: |
           echo Executing Xygeni scan ....   
           ls -l /home/runner/work/Mindustry/Mindustry/reports
           ls -l /home/runner/work/Mindustry/Mindustry/reports/*
-          exit 1
-          for i in $(ls /home/runner/work/Mindustry/Mindustry/reports/*/)
+          for i in $(ls /home/runner/work/Mindustry/Mindustry/reports/LGVExternalRepos/)
           do
               echo $i
-              #cp /home/runner/work/Mindustry/Mindustry/reports/*/$i "/home/runner/work/Mindustry/Mindustry/reports/*/${i}.json"
+              cp /home/runner/work/Mindustry/Mindustry/reports/LGVExternalRepos/$i "/home/runner/work/Mindustry/Mindustry/reports/LGVExternalRepos/${i}.json"
           done
-          ls -l /home/runner/work/Mindustry/Mindustry/reports/*/
+          ls -l /home/runner/work/Mindustry/Mindustry/reports/LGVExternalRepos/
           exit 1
           $HOME/.xygeni/xygeni report-upload -n KKK \
             -r /home/runner/work/Mindustry/Mindustry/xy_reports/misconf.Mindustry.json
