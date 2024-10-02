@@ -41,15 +41,11 @@ jobs:
               cp /home/runner/work/Mindustry/Mindustry/reports/LGVExternalRepos/$i "/home/runner/work/Mindustry/Mindustry/reports/LGVExternalRepos/${i}.json"
           done
           ls -l /home/runner/work/Mindustry/Mindustry/reports/LGVExternalRepos/
-          cat /home/runner/work/Mindustry/Mindustry/reports/LGVExternalRepos/deps.*.json
+          #cat /home/runner/work/Mindustry/Mindustry/reports/LGVExternalRepos/deps.*.json
 
           for i in {1..5}
           do
-             echo "Welcome $i times"
-          done
-          exit 1
-          
-          $HOME/.xygeni/xygeni report-upload -n KKK \
+            $HOME/.xygeni/xygeni report-upload -n KKK$i \
             -r /home/runner/work/Mindustry/Mindustry/reports/LGVExternalRepos/codetamper.*.json \
              -r /home/runner/work/Mindustry/Mindustry/reports/LGVExternalRepos/compliance.*.json \
              -r /home/runner/work/Mindustry/Mindustry/reports/LGVExternalRepos/deps.*.json \
@@ -58,3 +54,4 @@ jobs:
              -r /home/runner/work/Mindustry/Mindustry/reports/LGVExternalRepos/misconf.*.json \
              -r /home/runner/work/Mindustry/Mindustry/reports/LGVExternalRepos/secrets.*.json \
              -r /home/runner/work/Mindustry/Mindustry/reports/LGVExternalRepos/suspectdeps.*.json
+          done
