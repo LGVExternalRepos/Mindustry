@@ -45,10 +45,10 @@ jobs:
 
           for i in {1..5}
           do
+            Vuelta $i
             $HOME/.xygeni/xygeni report-upload -n KKK$i \
             -r /home/runner/work/Mindustry/Mindustry/reports/LGVExternalRepos/codetamper.*.json \
              -r /home/runner/work/Mindustry/Mindustry/reports/LGVExternalRepos/compliance.*.json \
-             -r /home/runner/work/Mindustry/Mindustry/reports/LGVExternalRepos/deps.*.json \
              -r /home/runner/work/Mindustry/Mindustry/reports/LGVExternalRepos/iac.*.json \
              -r /home/runner/work/Mindustry/Mindustry/reports/LGVExternalRepos/inventory.*.json \
              -r /home/runner/work/Mindustry/Mindustry/reports/LGVExternalRepos/misconf.*.json \
